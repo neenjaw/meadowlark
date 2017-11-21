@@ -1,0 +1,24 @@
+{
+  "name": "meadowlark",
+  "version": "1.0.0",
+  "description": "Working example to learn node/express",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neenjaw/meadowlark.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "handlebars"
+  ],
+  "author": "Tim Austin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neenjaw/meadowlark/issues"
+  },
+  "homepage": "https://github.com/neenjaw/meadowlark#readme"
+}
