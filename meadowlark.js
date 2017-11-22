@@ -22,6 +22,14 @@ app.use(express.static(__dirname + '/public'));
 
 app.set('port', process.env.PORT || 3000);
 
+// testing flag from url query
+
+app.use(function(req, res, next){
+  res.locals.showTests = app.get('env') !== 'production' &&
+    req.query.test === '1';
+  next();
+});
+
 // routes
 
 app.get('/', function(req, res){
@@ -29,7 +37,10 @@ app.get('/', function(req, res){
 });
 
 app.get('/about', function(req, res){
-  res.render('about', { fortune: fortune.getFortune() });
+  res.render('about', {
+    fortune: fortune.getFortune(),
+    pageTestScript: '/qa/tests-about.js'
+  });
 });
 
 app.get('/about/contact', function(req, res){
@@ -40,6 +51,14 @@ app.get('/about/contact', function(req, res){
 app.get('/about/directions', function(req, res){
   res.type('text/plain');
   res.send('Directions to Meadowlark Travel');
+});
+
+app.get('/tours/hood-river', function(req, res){
+  res.render('tours/hood-river');
+});
+
+app.get('/tours/request-group-rate', function(req, res){
+  res.render('tours/request-group-rate');
 });
 
 // custom 404 page
