@@ -14,6 +14,8 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('views', 'src/views/');
 
+var fortune = require('./src/lib/fortune.js');
+
 app.use(express.static(__dirname + '/public'));
 
 // set port
@@ -27,7 +29,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/about', function(req, res){
-  res.render('about');
+  res.render('about', { fortune: fortune.getFortune() });
 });
 
 app.get('/about/contact', function(req, res){
